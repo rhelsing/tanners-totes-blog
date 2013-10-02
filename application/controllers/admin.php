@@ -20,26 +20,36 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('Post_model');
-		$this->Post_model->test("Hello");
+		//$this->Post_model->test("Hello");
 	}
 
 	public function post($op="", $id=null){
+		$this->load->model('Post_model');
 		if($op==""){
 			//echo "all";
+			$posts = $this->Post_model->get_all();
+			foreach ($posts as $post){
+				echo $post->name;
+			}
 		}else if($op=="new"){
-			//echo "new";
+			$this->load->view('post/new');
 		}else if($op=="save"){
-			//echo "save";
+			//save
+			redirect('/admin/post');
 		}else if($op=="view" && !is_null($id)){
-			//echo "view".$id;
+			$data = $this->Post_model->get('id = '.$id);
+			$this->load->view('post/view', $data);
 		}else if($op=="edit" && !is_null($id)){
-			//echo "edit".$id;
+			$data = $this->Post_model->get('id = '.$id);
+			$this->load->view('post/edit', $data);
 		}else if($op=="update" && !is_null($id)){
-			//echo "update".$id;
+			//update and redirect to all
 		}else if($op=="delete" && !is_null($id)){
-			//echo "delete".$id;
+			//delete
+			redirect('/admin/post');
 		}else{
-			//echo "not well formed";
+			//not well formed;
+			redirect('/admin/post');
 		}
 	}
 

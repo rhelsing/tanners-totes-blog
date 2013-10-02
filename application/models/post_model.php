@@ -11,10 +11,6 @@ class Post_model extends CI_Model {
                 parent::__construct();
                 $this->table = "posts";
         }
-
-        public function test($s){
-                echo $s; 
-        }
  
         // insert a row - pass in an object to $o and it will insert
         public function insert($o){
@@ -43,7 +39,7 @@ class Post_model extends CI_Model {
                         $this->db->where($where);
                 }
                 //sort
-                $this->db->order_by("name", "asc");
+                //$this->db->order_by("name", "asc");
                 $query = $this->db->get($this->table);
                 return $query->result();
         }
