@@ -32,7 +32,6 @@ class Admin extends CI_Controller {
 		}else if($op=="new"){
 			$data['main_content'] = 'post/new';
 		}else if($op=="save"){
-			//save
 			$this->Post_model->insert($_POST);
 			redirect('/admin/post');
 		}else if($op=="view" && !is_null($id)){
@@ -42,9 +41,10 @@ class Admin extends CI_Controller {
 			$data['post'] = $this->Post_model->get('id = '.$id);
 			$data['main_content'] = 'post/edit';
 		}else if($op=="update" && !is_null($id)){
-			//update and redirect to all
+			$this->Post_model->update($_POST, $id);
+			redirect('/admin/post');
 		}else if($op=="delete" && !is_null($id)){
-			//delete
+			$this->Post_model->delete($id);
 			redirect('/admin/post');
 		}else{
 			//not well formed;

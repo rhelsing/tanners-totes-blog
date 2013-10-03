@@ -18,7 +18,7 @@
 		        	echo "<td>".$post->name."</td>";
 		        	echo "<td>".$post->content."</td>";
 		        	echo "<td>".$post->date."</td>";
-		        	echo "<td>".$post->in_slider.'<a href="./post/delete/'.$post->id.'" class="pw_button small right red"><img src="http://localhost/tanners_totes/img/icons/Garbage-Closed-16.png" alt="Customize-01-16" width="16" height="16" /></a><a class="pw_button small right"><img src="http://localhost/tanners_totes/img/icons/Data-Edit-16.png" alt="Customize-01-16" width="16" height="16" /></a>'."</td>";
+		        	echo "<td>".$post->in_slider.'<a href="./post/delete/'.$post->id.'" class="pw_button small right red"><img src="http://localhost/tanners_totes/img/icons/Garbage-Closed-16.png" alt="Customize-01-16" width="16" height="16" /></a><a href="./post/edit/'.$post->id.'" class="pw_button small right"><img src="http://localhost/tanners_totes/img/icons/Data-Edit-16.png" alt="Customize-01-16" width="16" height="16" /></a>'."</td>";
 		        	echo "</tr>";
 		        }
 		        ?>
