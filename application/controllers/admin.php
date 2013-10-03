@@ -27,21 +27,20 @@ class Admin extends CI_Controller {
 		$this->load->model('Post_model');
 		if($op==""){
 			//echo "all";
-			$posts = $this->Post_model->get_all();
-			foreach ($posts as $post){
-				echo $post->name;
-			}
+			$data['posts'] = $this->Post_model->get_all();
+			$data['main_content'] = 'post/all';
 		}else if($op=="new"){
-			$this->load->view('post/new');
+			$data['main_content'] = 'post/new';
 		}else if($op=="save"){
 			//save
+			$this->Post_model->insert($_POST);
 			redirect('/admin/post');
 		}else if($op=="view" && !is_null($id)){
-			$data = $this->Post_model->get('id = '.$id);
-			$this->load->view('post/view', $data);
+			$data['post'] = $this->Post_model->get('id = '.$id);
+			$data['main_content'] = 'post/view';
 		}else if($op=="edit" && !is_null($id)){
-			$data = $this->Post_model->get('id = '.$id);
-			$this->load->view('post/edit', $data);
+			$data['post'] = $this->Post_model->get('id = '.$id);
+			$data['main_content'] = 'post/edit';
 		}else if($op=="update" && !is_null($id)){
 			//update and redirect to all
 		}else if($op=="delete" && !is_null($id)){
@@ -51,6 +50,8 @@ class Admin extends CI_Controller {
 			//not well formed;
 			redirect('/admin/post');
 		}
+		$data['s'] = 'posts';
+		$this->load->view('admin_template', $data);
 	}
 
 	public function quote($op="", $id=null){
