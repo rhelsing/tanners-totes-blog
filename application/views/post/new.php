@@ -1,24 +1,42 @@
+<script src="<?php echo base_url('js/ckeditor.js'); ?>"></script>
 <h1 class="pad_left">Posts</h1>
         <div id="pane">
         <div id="pane_nav">
-	        <a href="./">All Posts</a>
-	        <a href="" class="select">New Post</a>
+	        <a href="<?php echo base_url('index.php/admin/post/'); ?>">All Posts</a>
+	        <a href="<?php echo base_url('index.php/admin/post/new/'); ?>" class="select">New Post</a>
+	        <a href="<?php echo base_url('index.php/admin/post/images/'); ?>">Manage Images</a>
         </div>
         
         	<div id="form_header">New Post</div>
         
-        	<form method="post" action="./save">
+        	<form method="post" action="<?php echo base_url('index.php/admin/post/save/'); ?>">
         
         <!-- Form Block -->
             <legend>Main Info</legend>
             <div class="pure-g">
-	            <div class="pure-u-1-3 f_i">
-		            <span class="seperate_end"><label>Title</label>
-		            <input type="text" name="name" /></span>
+	            <div class="f_i">
+		            <span class="seperate_end">
+		            <input type="text" name="name" placeholder="Title" /></span>
 		         </div>
-		         <div class="pure-u-2-3 f_i">
-		            <span class="seperate_end"><label>Content</label>
-		            <input type="text" name="content" /></span>
+		         <div style="height:20px;"></div>
+		         <div class="pure-g">
+		         	<div class="pure-u-3-4 f_i">
+		            <textarea name="content" class="ckeditor"></textarea>
+		        	</div>
+		        	<div class="pure-u-1-4 f_i" style="overflow:scroll; height:300px;">
+		            <h3 class="pad_left">Images</h3>
+		            <?php
+if ($handle = opendir('./images/')) {
+    while (false !== ($entry = readdir($handle))) {
+        if ($entry != "." && $entry != ".." && $entry != ".DS_Store") {
+            echo "<img src='".base_url()."images/".$entry."' width='200px' style='margin-left:10px;' /></br>";
+            //show image and url
+        }
+    }
+    closedir($handle);
+}
+?>
+		        	</div>
 		         </div>
 		      </div>
 		    <!-- Form Block -->

@@ -46,6 +46,8 @@ class Admin extends CI_Controller {
 		}else if($op=="delete" && !is_null($id)){
 			$this->Post_model->delete($id);
 			redirect('/admin/post');
+		}else if($op=="images"){
+			$data['main_content'] = 'post/images';
 		}else{
 			//not well formed;
 			redirect('/admin/post');

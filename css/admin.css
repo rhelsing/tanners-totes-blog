@@ -479,6 +479,14 @@ label:nth-child(2) input{
 
 .f_i{
 }
+
+.f_i textarea{
+	width: 100%;
+	padding: 10px 8px 10px 12px;
+	margin: 5px 1px 3px 0px;
+}
+
+
 .f_i input[type="text"]{
 	width: 100%;
 	
