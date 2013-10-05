@@ -19,8 +19,9 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->model('Post_model');
-		//$this->Post_model->test("Hello");
+		$data['main_content'] = 'dashboard';
+		$data['s'] = 'dashboard';
+		$this->load->view('admin_template', $data);
 	}
 
 	public function post($op="", $id=null){

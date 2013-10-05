@@ -10,15 +10,14 @@
 enctype="multipart/form-data">
 <label for="file">Filename:</label>
 <input type="file" name="file" id="file"><br><br>
-<input type="submit" name="submit" value="Submit">
+<input type="submit" name="submit" value="Submit"><br><br>
 </form>
 
-<h3 class="pad_left">Images</h3>
                     <?php
 if ($handle = opendir('./images/')) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != ".." && $entry != ".DS_Store") {
-            echo "<img src='".base_url()."images/".$entry."' width='200px' style='float:left; margin-left:10px;' />";
+            echo "<img src='".base_url()."images/".$entry."' width='200px' style='float:left; margin-left:10px; margin-bottom:10px;' />";
             //show image and url
         }
     }
