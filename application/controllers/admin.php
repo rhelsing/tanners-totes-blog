@@ -2,21 +2,6 @@
 
 class Admin extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$data['main_content'] = 'dashboard';
@@ -58,23 +43,38 @@ class Admin extends CI_Controller {
 	}
 
 	public function quote($op="", $id=null){
+		$this->load->model('Quote_model');
 		if($op==""){
 			//echo "all";
+			$data['quotes'] = $this->Quote_model->get_all();
+			$data['main_content'] = 'quote/all';
 		}else if($op=="new"){
 			//echo "new";
+			$data['main_content'] = 'quote/new';
 		}else if($op=="save"){
+			$this->Quote_model->insert($_POST);
+			redirect('/admin/quote');
 			//echo "save";
 		}else if($op=="view" && !is_null($id)){
 			//echo "view".$id;
 		}else if($op=="edit" && !is_null($id)){
 			//echo "edit".$id;
+			$data['quote'] = $this->Quote_model->get('id = '.$id);
+			$data['main_content'] = 'quote/edit';
 		}else if($op=="update" && !is_null($id)){
 			//echo "update".$id;
+			$this->Quote_model->update($_POST, $id);
+			redirect('/admin/quote');
 		}else if($op=="delete" && !is_null($id)){
 			//echo "delete".$id;
+			$this->Quote_model->delete($id);
+			redirect('/admin/quote');
 		}else{
 			//echo "not well formed";
+			redirect('/admin/quote');
 		}
+		$data['s'] = 'quotes';
+		$this->load->view('admin_template', $data);
 	}
 
 	public function state($op="", $id=null){
@@ -182,6 +182,7 @@ class Admin extends CI_Controller {
 			redirect('/admin/location');
 		}else if($op=="delete" && !is_null($id)){
 			//echo "delete".$id;
+			$this->Location_model->delete($id);
 			redirect('/admin/location');
 		}else{
 			//echo "not well formed";
@@ -192,23 +193,38 @@ class Admin extends CI_Controller {
 	}
 
 	public function piece($op="", $id=null){
+		$this->load->model('Piece_model');
 		if($op==""){
 			//echo "all";
+			$data['pieces'] = $this->Piece_model->get_all();
+			$data['main_content'] = 'piece/all';
 		}else if($op=="new"){
 			//echo "new";
+			$data['main_content'] = 'piece/new';
 		}else if($op=="save"){
 			//echo "save";
+			$this->Piece_model->insert($_POST);
+			redirect('/admin/piece');
 		}else if($op=="view" && !is_null($id)){
 			//echo "view".$id;
 		}else if($op=="edit" && !is_null($id)){
 			//echo "edit".$id;
+			$data['piece'] = $this->Piece_model->get('id = '.$id);
+			$data['main_content'] = 'piece/edit';
 		}else if($op=="update" && !is_null($id)){
 			//echo "update".$id;
+			$this->Piece_model->update($_POST, $id);
+			redirect('/admin/piece');
 		}else if($op=="delete" && !is_null($id)){
 			//echo "delete".$id;
+			$this->Piece_model->delete($id);
+			redirect('/admin/piece');
 		}else{
 			//echo "not well formed";
+			redirect('/admin/piece');
 		}
+		$data['s'] = 'other';
+		$this->load->view('admin_template', $data);
 	}
 }
 

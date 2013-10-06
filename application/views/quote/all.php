@@ -1,25 +1,20 @@
-<h1 class="pad_left">Posts</h1>
+<h1 class="pad_left">Quotes</h1>
         <div id="pane">
         <div id="pane_nav">
-	        <a href="<?php echo base_url('index.php/admin/post/'); ?>" class="select">All Posts</a>
-	        <a href="<?php echo base_url('index.php/admin/post/new/'); ?>">New Post</a>
-	        <a href="<?php echo base_url('index.php/admin/post/images/'); ?>">Manage Images</a>
+	        <a href="<?php echo base_url('index.php/admin/quote/'); ?>" class="select">All Quotes</a>
+	        <a href="<?php echo base_url('index.php/admin/quote/new/'); ?>">New Quote</a>
         </div>
         
         	<table>
 	        	<tr>
-		        	<th>Name &#9662;</th>
-		        	<th>Content</th>
-		        	<th>Date</th>
-		        	<th>Slider</th>
+		        	<th>Author &#9662;</th>
+		        	<th>Quote</th>
 		        </tr>
 		        <?php 
-		        foreach($posts as $post){
+		        foreach($quotes as $quote){
 		        	echo "<tr>";
-		        	echo "<td>".$post->name."</td>";
-		        	echo "<td>".substr(strip_tags($post->content), 0, 40)."</td>";
-		        	echo "<td>".$post->date."</td>";
-		        	echo "<td>".$post->in_slider.'<a href="'.base_url('index.php/admin/post/delete/'.$post->id).'" class="pw_button small right red"><img src="'.base_url().'img/icons/Garbage-Closed-16.png" alt="Customize-01-16" width="16" height="16" /></a><a href="'.base_url('index.php/admin/post/edit/'.$post->id).'" class="pw_button small right"><img src="'.base_url().'img/icons/Data-Edit-16.png" alt="Customize-01-16" width="16" height="16" /></a>'."</td>";
+		        	echo "<td>".$quote->author."</td>";
+		        	echo "<td>".$quote->quote.'<a href="'.base_url('index.php/admin/quote/delete/'.$quote->id).'" class="pw_button small right red"><img src="'.base_url().'img/icons/Garbage-Closed-16.png" alt="Customize-01-16" width="16" height="16" /></a><a href="'.base_url('index.php/admin/quote/edit/'.$quote->id).'" class="pw_button small right"><img src="'.base_url().'img/icons/Data-Edit-16.png" alt="Customize-01-16" width="16" height="16" /></a>'."</td>";
 		        	echo "</tr>";
 		        }
 		        ?>

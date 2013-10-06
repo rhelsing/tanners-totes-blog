@@ -12,8 +12,8 @@
         	</div>
         	<div class="pure-u-1-3"><div class="pane_i">
         		<div class="pane_bar"><img src="<?php echo base_url(); ?>img/members.png" alt="members" width="19" height="18" /> Quotes</div>
-        		<a href="#">All Quotes</a>
-                <a href="#">New Quote</a>
+        		<a href="<?php echo base_url('index.php/admin/quote'); ?>">All Quotes</a>
+                <a href="<?php echo base_url('index.php/admin/quote/new'); ?>">New Quote</a>
         	</div>
         	</div>
         	<div class="pure-u-1-3">
@@ -32,7 +32,7 @@
         	</div>
         	<div class="pure-u-1-3"><div class="pane_i">
         		<div class="pane_bar"><img src="<?php echo base_url(); ?>img/file.png" alt="admin" width="19" height="18" /> Other Content</div>
-        		<a href="#">Manage Content</a>
+        		<a href="<?php echo base_url('index.php/admin/piece'); ?>">All Content</a>
         	</div>
         	</div>
         	<div class="pure-u-1-3">

@@ -1,25 +1,19 @@
-<h1 class="pad_left">Posts</h1>
+<h1 class="pad_left">Other Content</h1>
         <div id="pane">
         <div id="pane_nav">
-	        <a href="<?php echo base_url('index.php/admin/post/'); ?>" class="select">All Posts</a>
-	        <a href="<?php echo base_url('index.php/admin/post/new/'); ?>">New Post</a>
-	        <a href="<?php echo base_url('index.php/admin/post/images/'); ?>">Manage Images</a>
+	        <a href="<?php echo base_url('index.php/admin/piece/'); ?>" class="select">All Content</a>
         </div>
         
         	<table>
 	        	<tr>
-		        	<th>Name &#9662;</th>
+		        	<th>Section &#9662;</th>
 		        	<th>Content</th>
-		        	<th>Date</th>
-		        	<th>Slider</th>
 		        </tr>
 		        <?php 
-		        foreach($posts as $post){
+		        foreach($pieces as $piece){
 		        	echo "<tr>";
-		        	echo "<td>".$post->name."</td>";
-		        	echo "<td>".substr(strip_tags($post->content), 0, 40)."</td>";
-		        	echo "<td>".$post->date."</td>";
-		        	echo "<td>".$post->in_slider.'<a href="'.base_url('index.php/admin/post/delete/'.$post->id).'" class="pw_button small right red"><img src="'.base_url().'img/icons/Garbage-Closed-16.png" alt="Customize-01-16" width="16" height="16" /></a><a href="'.base_url('index.php/admin/post/edit/'.$post->id).'" class="pw_button small right"><img src="'.base_url().'img/icons/Data-Edit-16.png" alt="Customize-01-16" width="16" height="16" /></a>'."</td>";
+		        	echo "<td>".$piece->name."</td>";
+		        	echo "<td>".$piece->content.'<a href="'.base_url('index.php/admin/piece/edit/'.$piece->id).'" class="pw_button small right"><img src="'.base_url().'img/icons/Data-Edit-16.png" alt="Customize-01-16" width="16" height="16" /></a>'."</td>";
 		        	echo "</tr>";
 		        }
 		        ?>
